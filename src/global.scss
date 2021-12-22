@@ -1,0 +1,71 @@
+@import url(http://at.alicdn.com/t/font_2811646_w6rsx0t69g.css);
+
+$blue: #3e8ddd;
+$white5: rgba(255, 255, 255, 0.05);
+
+* {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+    color: white;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+body {
+&::-webkit-scrollbar {
+    display: none;
+}
+}
+
+button {
+    padding: 4px 12px;
+    background: rgba($color: white, $alpha: 0.1);
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    color: $blue;
+    &:hover {
+background: $blue;
+color:white;
+    }
+    &:active {
+    filter: brightness(0.7);
+    }
+}
+.blue-button {
+    background: $blue;
+    color:white;
+    &:hover {
+        filter: brightness(1.1);
+    }
+    &:active {
+        filter: brightness(0.7);
+    }
+}
+
+.blur-container {
+    background:rgba(0,0,0,0.6);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.05);
+    box-sizing: border-box;
+}
+
+.light-container {
+    background:rgba(255,255,255,0.05);
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-sizing: border-box;
+    user-select: none;
+}
+
+.iconfont {
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1;
+    color:white
+  }
