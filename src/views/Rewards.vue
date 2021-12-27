@@ -1,12 +1,14 @@
 <template>
-  <div class="topbar"></div>
-  <div class="container">
+<div class="content-area-wrapper">
+  <div class="topbar empty-topbar"></div>
+  <div class="main-area container">
     <RewardItem layout="banner" />
     <RewardItem layout="list" />
     <RewardItem layout="list" />
     <RewardItem layout="list" />
     <RewardItem layout="list" />
     <RewardItem layout="list" />
+  </div>
   </div>
 </template>
 
@@ -20,23 +22,16 @@ export default {
 
 <style lang="scss" scoped>
 @import "../global.scss";
-.topbar {
-  position: fixed;
-  left: 100px;
-  right: 0px;
-  top: 0px;
-  height: 72px;
+
+.empty-topbar {
+  height:64px;
+  box-sizing: border-box;
 }
+
 .container {
-  position: fixed;
-  top: 72px;
-  left: 100px;
-  right: 0px;
-  bottom: 0px;
-  padding: 0px 40px;
-  overflow-y: scroll;
   div {
     margin-bottom: 12px;
   }
+  padding-bottom: 40px;
 }
 </style>

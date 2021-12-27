@@ -67,6 +67,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 40px;
 }
 
 h1 {
@@ -84,15 +85,16 @@ h1 {
 }
 .topgames {
   display: flex;
+  flex: 1;
   margin: 0px 0px 40px;
   gap: 12px;
+  min-height: 260px;
+  max-height: 306px;
 
   .topgame-item {
     flex: 1;
-    height: 306px;
   }
   .more {
-    height: 306px;
     width: 120px;
   }
 }

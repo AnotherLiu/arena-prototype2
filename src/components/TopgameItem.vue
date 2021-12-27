@@ -21,10 +21,12 @@ export default {
 
 .list {
   @extend .blur-container;
-  height: 92px;
+  height: 92px
+
 }
 .grid {
   @extend .blur-container;
-  height: 302px;
+  height: 302px
+
 }
 </style>
