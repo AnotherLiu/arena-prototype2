@@ -1,70 +1,77 @@
 <template>
-  <div class="topbar">
-    <div class="switch-view light-container">
-      <i
-        @click="view = 'list'"
-        :class="
-          view === 'list' ? 'iconfont icon-list selected' : 'iconfont icon-list'
-        "
-      ></i>
-      <i
-        @click="view = 'grid'"
-        :class="
-          view === 'grid' ? 'iconfont icon-grid selected' : 'iconfont icon-grid'
-        "
-      ></i>
-    </div>
-    <div class="addgame light-container">
-      <i class="iconfont icon-add"></i>
-      Add Games
-    </div>
-  </div>
-  <div class="grid-container" v-if="view === 'grid'">
-    <GridItem
-      v-for="item in [
-        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
-        20,
-      ]"
-      :key="item"
-    />
-    <div class="item-placeholder"></div>
-    <div class="item-placeholder"></div>
-    <div class="item-placeholder"></div>
-    <div class="item-placeholder"></div>
-    <div class="item-placeholder"></div>
-    <div class="item-placeholder"></div>
-  </div>
-  <div class="list-container" v-if="view === 'list'">
-    <div class="list">
-      <div class="list-item" v-for="item in [1, 2, 3, 4, 5, 6, 7]" :key="item">
-        <div class="small-image"></div>
-        <div class="title">Game title</div>
-        <div class="play">Play</div>
+  <div :class="view==='list'?'content-area-wrapper':'content-area-wrapper darker-background'">
+    <div class="topbar">
+      <div class="tab">
+        <button
+          @click="view = 'list'"
+          :class="view === 'list' ? 'selected' : ''"
+        >
+          <i class="iconfont icon-list"></i>
+        </button>
+        <button
+          @click="view = 'grid'"
+          :class="view === 'grid' ? 'selected' : ''"
+        >
+          <i class="iconfont icon-grid"></i>
+        </button>
       </div>
+      <button>
+        <i class="iconfont icon-add"></i>
+        Add Games
+      </button>
+      <button class="grey-button"><i class="iconfont icon-refresh"></i></button>
     </div>
-    <div class="content">
-      <div class="info blur-container">
-        <img
-          src="https://m.media-amazon.com/images/M/MV5BOGZhY2ZjOWItODRlYS00NjQyLWJkMjAtZGFkYTAyOTdiZTk5XkEyXkFqcGdeQXVyNDIwOTkyNjM@._V1_.jpg"
-          alt=""
-          class="info-image"
-        />
-        <div class="right-area">
-          <div class="title">Game Name Here</div>
-          <div class="text-items">
-            <div class="text">Time played: 138h</div>
-            <div class="text">Last played: 2 hours ago</div>
-            <div class="text">Library: Steam</div>
-            <div class="text">Genre: act / rpg</div>
-            <div class="text">Publisher: Capcom</div>
-            <div class="text">Release date: 2020.9.13</div>
-          </div>
-          <div class="button-group">
-            <button class="blue-button">Play</button>
-          </div>
+    <div class="main-area grid-container" v-if="view === 'grid'">
+      <GridItem
+        v-for="item in [
+          0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+          20,
+        ]"
+        :key="item"
+      />
+      <div class="item-placeholder"></div>
+      <div class="item-placeholder"></div>
+      <div class="item-placeholder"></div>
+      <div class="item-placeholder"></div>
+      <div class="item-placeholder"></div>
+      <div class="item-placeholder"></div>
+    </div>
+    <div class="main-area list-container" v-if="view === 'list'">
+      <div class="list">
+        <div
+          class="list-item"
+          v-for="item in [1, 2, 3, 4, 5, 6, 7]"
+          :key="item"
+        >
+          <div class="small-image"></div>
+          <div class="title">Game title</div>
+          <div class="play">Play</div>
         </div>
       </div>
-      <div class="gallery blur-container"></div>
+      <div class="content">
+        <div class="info blur-container">
+          <img
+            src="https://m.media-amazon.com/images/M/MV5BOGZhY2ZjOWItODRlYS00NjQyLWJkMjAtZGFkYTAyOTdiZTk5XkEyXkFqcGdeQXVyNDIwOTkyNjM@._V1_.jpg"
+            alt=""
+            class="info-image"
+          />
+          <div class="right-area">
+            <div class="title">Game Name Here</div>
+            <div class="text-items">
+              <div class="text">Time played: 138h</div>
+              <div class="text">Last played: 2 hours ago</div>
+              <div class="text">Library: Steam</div>
+              <div class="text">Genre: act / rpg</div>
+              <div class="text">Publisher: Capcom</div>
+              <div class="text">Release date: 2020.9.13</div>
+            </div>
+            <div class="button-group">
+              <button class="blue-button">Play</button>
+            </div>
+          </div>
+        </div>
+        <div class="gallery blur-container"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -86,57 +93,26 @@ export default {
 
 <style lang='scss' scoped>
 @import "../global.scss";
-.topbar {
-  position: fixed;
-  left: 100px;
-  right: 0px;
-  top: 0px;
 
-  padding: 20px 40px;
-  display: flex;
-  .switch-view {
-    display: flex;
-    .selected {
-      color: $blue;
-    }
-    margin-right: 12px;
-    i {
-      padding: 4px 8px;
-
-      &:hover {
-        background: rgba(255, 255, 255, 0.05);
-      }
-    }
-  }
-  .addgame {
-    display: flex;
-    padding: 4px 12px 4px 8px;
-    color: $blue;
-    &:hover {
-      background: rgba(255, 255, 255, 0.1);
-    }
-    i {
-      margin-right: 4px;
-      color: $blue;
-    }
+.darker-background {
+  &::before{
+    content:'';
+    position: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    background-color: rgba(0,0,0,0.4);
   }
 }
+
 .grid-container {
-  position: fixed;
-  top: 72px;
-  left: 100px;
-  right: 0px;
-  bottom: 0px;
-  padding: 0px 40px;
   display: flex;
-  overflow-y: scroll;
-  scrollbar-width: none;
   gap: 12px 12px;
   flex-wrap: wrap;
   align-content: flex-start;
   .item-placeholder {
     flex: 1;
-
     min-width: 340px;
     max-width: 500px;
     padding: 0px 24px;
@@ -148,12 +124,6 @@ export default {
   display: none;
 }
 .list-container {
-  position: fixed;
-  top: 72px;
-  left: 100px;
-  right: 0px;
-  bottom: 0px;
-  padding: 0px 40px;
   display: flex;
   gap: 24px;
   .list {
@@ -228,7 +198,7 @@ export default {
           flex: 1;
           display: flex;
           flex-wrap: wrap;
-          gap:0px;
+          gap: 0px;
           align-content: flex-start;
           max-width: 500px;
           .text {
@@ -246,7 +216,7 @@ export default {
       }
     }
     .gallery {
-      flex:1;
+      flex: 1;
     }
   }
 }

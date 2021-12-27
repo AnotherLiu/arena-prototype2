@@ -19,6 +19,7 @@ name:'GirdItem'
 </script>
 
 <style lang='scss' scoped>
+@import "../global.scss";
 .item {
 flex:1;
 max-width: 500px;
@@ -64,6 +65,13 @@ button {
     position: absolute;
     bottom: 16px;
 }
+
+}
+&:hover {
+    button {
+        @extend .blue-button;
+        transition: color 0.5s ease, background-color 0.5s ease;
+    }
 }
 
 }

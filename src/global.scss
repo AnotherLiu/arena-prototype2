@@ -1,73 +1,235 @@
+// import the needed iconfont
 @import url(http://at.alicdn.com/t/font_2811646_w6rsx0t69g.css);
 @import url(//at.alicdn.com/t/font_2811646_w6rsx0t69g.css);
 
+// universal colors used in the app
 $blue: #3e8ddd;
 $white5: rgba(255, 255, 255, 0.05);
-$white40: rgba(255,255,255,0.4);
+$white40: rgba(255, 255, 255, 0.4);
 
+// some global style settings, mainly font
 * {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; // the default font is just Segoe UI
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  user-select: none;
+    user-select: none;
     color: white;
     font-size: 14px;
     line-height: 1.5;
-  }
 
-body {
-&::-webkit-scrollbar {
-    display: none;
-}
+    // The default Chrome scrollbar is so ugly, let's customize it
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    /*Track*/
+    ::-webkit-scrollbar-track {
+        background: none;
+        border-radius: 10px;
+    }
+
+    /*Handle*/
+    ::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(10px);
+        border-radius: 4px;
+    }
 }
 
+// ------------------------- BUTTON STYLE, AND TABS / GROUPS BASED ON BUTTONS ----------------------------------------
+
+// Below the default button style. You can add a text, an icon or both. if you don't add any class, a button element will look like below, grey background and blue content
 button {
     padding: 4px 12px;
     background: rgba($color: white, $alpha: 0.1);
     border-radius: 4px;
     outline: none;
     border: none;
-    font-weight: bold;
-    letter-spacing: 0.5px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    line-height: 24px;
     color: $blue;
-    &:hover {
-background: $blue;
-color:white;
-    }
-    &:active {
-    filter: brightness(0.7);
-    }
-}
-.blue-button {
-    background: $blue;
-    color:white;
+    display: flex;
+    gap: 6px;
     &:hover {
         filter: brightness(1.1);
     }
     &:active {
         filter: brightness(0.7);
     }
+    i {
+        font-weight: normal;
+        color: $blue;
+        margin-left: -4px;
+        margin-right: -4px;
+    }
 }
 
+//If you want the button to be blue with white content, add below class
+.blue-button {
+    background: $blue;
+    color: white;
+    i {
+        color: white;
+    }
+}
+
+// If you want the button to be grey with some grey content on it, add below class
+.grey-button {
+    * {
+        color: rgba(255, 255, 255, 0.4);
+    }
+}
+
+//If the button doesn't have a background color, add this
+.clear-button {
+    background: none;
+    * {
+        color: rgba(255, 255, 255, 0.4);
+    }
+    &:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+}
+
+//below is the class for "big" button
+.big-button {
+    padding: 8px 16px;
+}
+
+//If the button is the only CTA button on page, add below class to make it extra big
+.extra-big-button {
+    padding: 14px 32px;
+}
+
+//You put "button"s in a tab, then add class ".selected" if that button element is selected
+.tab {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    display: flex;
+    overflow: hidden;
+    button {
+        padding: 4px 12px;
+        background: none;
+        border-radius: 0px;
+        outline: none;
+        border: none;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+        line-height: 24px;
+        * {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        display: flex;
+        gap: 6px;
+        &:hover {
+            filter: brightness(1.1);
+        }
+        &:active {
+            filter: brightness(0.7);
+        }
+    }
+    .selected {
+        background: $blue;
+        * {
+            color: white;
+        }
+
+        &:hover {
+            filter: none;
+        }
+    }
+}
+
+// ------------------------------- CONTAINER STYLE ---------------------------------
+
+// most commonly used dark container style in the app, with the background blur effect
 .blur-container {
-    background:rgba(0,0,0,0.6);
+    background: rgba(0, 0, 0, 0.6);
     border-radius: 8px;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.05);
+    // border: 1px solid rgba(255, 255, 255, 0.05);
     box-sizing: border-box;
+    // box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.6);
 }
 
+// below style is used on some kinds of minor items,tabs or buttons
 .light-container {
-    background:rgba(255,255,255,0.05);
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 4px;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     box-sizing: border-box;
     user-select: none;
 }
 
+//Buttons or other elements are often grouped together, use below class on their containers
+.group {
+    display: flex;
+    gap: 12px;
+}
+
+//additional icon style, just to make regular icon 24px size
 .iconfont {
     font-size: 24px;
     font-weight: normal;
     line-height: 1;
-    color:white
-  }
+  
+}
+
+// ----------------------------------- LAYOUT STYLES ---------------------------------------------------
+
+//There are background and gradient color for the whole window; for the real UI the background image should be dynamic
+.whole-window {
+    display: flex;
+    background: linear-gradient(to bottom, rgba(22, 24, 29, 0.2), rgba(22, 24, 29, 1)),
+        url(https://cdn.cloudflare.steamstatic.com/steam/apps/1517290/ss_8343a3ea65031a2721447f57fd9447decb504051.1920x1080.jpg?t=1639701632);
+    background-size: cover;
+    background-position: center center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    // The key to this nav bar is that its width is not fixed, so if the text of those navigation items change, the nav width will change accordingly, so is the right content area
+    .left-nav {
+        @extend .blur-container;
+        border-radius: 0px;
+    }
+
+    // content area on the right
+    .content-area {
+        flex: 1;
+        padding: 0px 0px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+}
+
+// this class makes no sense, just to wrap the content-area, otherwise it won't work
+.content-area-wrapper {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+// Every page has a topbar on the top, it is fixed there
+.topbar {
+    padding: 16px 40px;
+    display: flex;
+    gap: 12px;
+    z-index: 1;
+}
+
+// So in general the whole window is consisted of 3 parts, the left nav, the topbar, and this is the third
+.main-area {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0px 40px;
+}
