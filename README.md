@@ -11,7 +11,7 @@ In addition, if you are not front end developer for this app, you could open the
 
 ## How to use
 
-Most useful contents are in the src folder, first of all please go to the **global.scss** to view those universal styles, as well as basic page structure. (I wrote lots of comment in the file).
+Most useful contents are in the src folder, first of all please go to the **global.scss** to view those universal styles, as well as basic page structure, you could find styles of font/buttons/containers and so on, I also wrote lots of comment in this file for you to understand.
 
 In the **views** folder you can see the UI of 4 current pages, and some components are in **components** folder. 
 
@@ -21,8 +21,9 @@ In the **views** folder you can see the UI of 4 current pages, and some componen
 
 I packed the prototype into a windows app with Electron, here is the download link: https://lenovobeijing-my.sharepoint.com/:u:/g/personal/liuzy32_lenovo_com/EbZckaO50iNCrlhbDiNpCG8B2ovMe5gTu6yy-NfBqEGkFw?e=2dCUCd
 
-I'll try to keep this local portotype updated but it is expected if it is not.
+I'll try to keep this local prototype updated but it is expected if it is not.
 
 ## Sandbox Online Prototype
 
 This prototype is also synced on codesandbox, here is the link: https://codesandbox.io/s/arena-prototype-khp40
+If it shows error, try reloading the page.
